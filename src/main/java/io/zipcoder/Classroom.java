@@ -20,4 +20,12 @@ public class Classroom {
     public Student[] getStudents() {
         return student;
     }
+
+    public double getAverageExamScore() {
+        double total= 0;
+        for (Student stu: student){
+            total += stu.getAverageExamScore();
+        }
+        return total/student.length;
+    }
 }

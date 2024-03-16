@@ -16,7 +16,17 @@ public class ClassroomTest {
         Student[] actual = classroom.getStudents();
         //Then
         Assert.assertEquals(expected,actual);
-
-
+    }
+    @Test
+    public void testGetAverageExamScore(){
+        //Given
+        int maxNoStudents = 10;
+        Student[] students = new Student[]{new Student("Amelia", "mathew",new Double[]{100.0,200.0,300.0})};
+        Classroom classroom = new Classroom(maxNoStudents,students);
+        //When
+        double expected= (100.0 + 200.0 + 300.0)/3;
+        double actual = classroom.getAverageExamScore();
+        //Then
+        Assert.assertEquals(expected,actual,2);
     }
 }

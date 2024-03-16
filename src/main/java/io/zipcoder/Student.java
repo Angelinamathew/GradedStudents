@@ -34,14 +34,10 @@ public class Student {
 
     public String getExamScores() {
         StringBuilder sb = new StringBuilder();
-        for (Double score : examScores){
-            StringBuilder append = sb.append("Exam " + (examScores.indexOf(score) + 1) + "->" + score.intValue() + "\n";
+        for (Double score : examScores) {
+            StringBuilder append = sb.append("Exam " + (examScores.indexOf(score) + 1) + " -> " + score.intValue() + "\n");
         }
         return sb.toString();
-    }
-
-    public void setExamScores(int examNum, Double newScore) {
-        examScores.add(examNum, newScore);
     }
 
     public void addExamScore(double examScore) {
@@ -49,7 +45,28 @@ public class Student {
 
     }
 
-    public String getAverageExamScore() {
+    public void setExamScores(int examNum, Double newScore) {
+        examScores.remove(examScores.get(examNum - 1));
+        examScores.add(examNum - 1, newScore);
+    }
 
+    public Double getAverageExamScore() {
+        int sum = 0;
+        for (Double sc : examScores) {
+            sum += sc;
+        }
+        return Double.valueOf(sum / examScores.size());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Student name: " + this.firstName + " " + this.lastName);
+        stringBuilder.append("\n> Average Score: " + getAverageExamScore());
+        stringBuilder.append("\n> Exam Scores:");
+        for (int i = 0; i < examScores.size(); i++) {
+            stringBuilder.append("\n Exam " + (i + 1) + " -> " + examScores.get(i).intValue());
+        }
+        return stringBuilder.toString();
     }
 }

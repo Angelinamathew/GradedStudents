@@ -53,7 +53,7 @@ public class StudentTest {
         Double[] testScore = new Double[]{50.0, 60.0, 70.0};
         Student student = new Student(firstName, lastName, testScore);
         //When
-        String expected ="Exam 1 -> 50\n Exam 2 -> 60\n Exam 3 -> 70";
+        String expected ="Exam 1 -> 50\nExam 2 -> 60\nExam 3 -> 70\n";
         String actual = student.getExamScores();
         //Then
         Assert.assertEquals(expected, actual);
@@ -67,7 +67,7 @@ public class StudentTest {
         Student student = new Student(firstName, lastName, testScore);
         //When
         student.addExamScore(80.0);
-        String expected ="Exam 1 -> 50\n Exam 2 -> 60\n Exam 3 -> 70\n Exam 4 -> 80\n";
+        String expected ="Exam 1 -> 50\nExam 2 -> 60\nExam 3 -> 70\nExam 4 -> 80\n";
         String actual = student.getExamScores();
         //Then
         Assert.assertEquals(expected, actual);
@@ -81,7 +81,7 @@ public class StudentTest {
         Student student = new Student(firstName, lastName, testScore);
         //When
         student.setExamScores(1, 150.0);
-        String expected ="Exam 1 -> 150\n Exam 2 -> 60\n Exam 3 -> 70\n Exam 4 -> 80\n";
+        String expected ="Exam 1 -> 150\nExam 2 -> 60\nExam 3 -> 70\n";
         String actual = student.getExamScores();
         //Then
         Assert.assertEquals(expected, actual);
@@ -95,7 +95,7 @@ public class StudentTest {
         Student student = new Student(firstName, lastName, testScore);
         //When
         Double expected = (50.0 + 60.0 + 70.0)/3;
-        String actual = student.getAverageExamScore();
+        Double actual = student.getAverageExamScore();
         //Then
         Assert.assertEquals(expected, actual);
     }
@@ -107,9 +107,9 @@ public class StudentTest {
         Double[] testScore = new Double[]{50.0, 60.0, 70.0};
         Student student = new Student(firstName, lastName, testScore);
         //When
-        String expected = "Student name "+ firstName+ " "+lastName+"\n"+
+        String expected = "Student name: "+ firstName+ " "+lastName+"\n"+
                 "> Average Score: "+ student.getAverageExamScore() + "\n"+
-                "> Exam Scores:\n "+ "Exam 1 -> 150\n Exam 2 -> 60\n Exam 3 -> 70\n Exam 4 -> 80";
+                "> Exam Scores:\n "+ "Exam 1 -> 50\n Exam 2 -> 60\n Exam 3 -> 70";
         String actual = student.toString();
         //Then
         Assert.assertEquals(expected, actual);
